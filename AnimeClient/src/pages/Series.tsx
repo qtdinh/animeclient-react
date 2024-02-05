@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Wrapper from '../assets/wrappers/Series';
-import { environments } from '../environments/environments';
+import axiosInstance from '../utils/Interceptor';
 
 interface SeriesItem {
     seriesId: number;
@@ -16,8 +16,8 @@ const Series = () => {
 
     const fetchSeries = async () => {
         try {
-            const response = await fetch(environments.API_URL + '/api/series');
-            const data = await response.json();
+            const response = await axiosInstance.get('/api/series');
+            const data = await response.data;
             setSeries(data);
         } catch(error) {
             console.error(error);

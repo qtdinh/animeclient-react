@@ -11,13 +11,8 @@ const Wrapper = styled.div`
         margin-left: 30px;
         font-size: 25px;
         text-align: center;
-    }
-
-    a {
-        background: transparent;
         color: white;
     }
-    
 
     .separator {
         flex: 1 1 auto;

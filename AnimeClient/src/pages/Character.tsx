@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Wrapper from '../assets/wrappers/Character';
-import { environments } from '../environments/environments';
+import axiosInstance from '../utils/Interceptor';
 
 interface Character {
     characterId: number;
@@ -16,8 +16,8 @@ const Characters = () => {
 
     const fetchCharacters = async () => {
         try {
-            const response = await fetch(environments.API_URL + '/api/character');
-            const data = await response.json();
+            const response = await axiosInstance.get('/api/character');
+            const data = await response.data;
             setCharacters(data);
         } catch(error) {
             console.error(error);
